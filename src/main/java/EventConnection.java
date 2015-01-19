@@ -30,7 +30,7 @@ public class EventConnection<T> {
      * If they are not, disconnect them and return true.
      * @return a boolean value
      */
-    public boolean disconnect() {
+    public boolean disconnect() { // Consider making this return "void". It doesn't make sense to return whether it was disconnected or not.
         if (event == null) {
             return false;
         }

@@ -7,7 +7,13 @@ public class Event<T> {
     /**
      * A Hashmap that has the event handler id as key and the event handler as value.
      */
-    private final HashMap<EventHandlerID, EventHandler> eventHandlerMap = new HashMap<EventHandlerID, EventHandler>();
+    // Making the type of the field an interface/base class of the instance can tell others
+    // how you intend to use the instance.
+    // For example, you intend to use the HashMap as a Map, and so you don't intend to use any
+    // methods specific to HashMap. Of course, only do this if you only want to use the methods in
+    // Map (which you happen to do for this class.). Keep this in mind for future refactorings.
+    // It might make your life a little easier.
+    private final Map<EventHandlerID, EventHandler> eventHandlerMap = new HashMap<EventHandlerID, EventHandler>();
 
     /**
      * A method that connects an event handler to an event.
@@ -39,7 +45,8 @@ public class Event<T> {
      * @param data some data with type T
      */
     public void invoke(T data) {
-        ArrayList<EventHandler<T>> eventHandlers = new ArrayList<EventHandler<T>>(eventHandlerMap.values());
+        // Change the type below to List<EventHandler<T>>, for the same reason as stated above.
+        List<EventHandler<T>> eventHandlers = new ArrayList<EventHandler<T>>(eventHandlerMap.values());
         for (EventHandler handler : eventHandlers) {
             handler.invoke(data);
         }

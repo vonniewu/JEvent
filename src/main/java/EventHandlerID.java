@@ -1,14 +1,30 @@
 /**
- * Created by vonniewu on 1/18/15.
+ * Copyright [yyyy] Vonnie Wu
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ */
+
+
+/**
+ * This class initializes an EventHandlerID and the HashCode of the id.
  */
 public class EventHandlerID {
-    private long id;         // Make this a final field. It shouldn't be reassigned.
+    private final long id;
 
     /**
      * The constructor of EventHandlerID
      * @param id an id of type long
      */
-    // This method does not need to be multiple lines. Remember that code density is a good thing.
     public EventHandlerID (long id) { this.id = id; }
 
     /**
@@ -16,7 +32,6 @@ public class EventHandlerID {
      * @return the hash code of the id with type int
      */
     @Override
-    // Same here.
     public int hashCode() { return Long.valueOf(id).hashCode(); }
 
     /**
@@ -29,8 +44,6 @@ public class EventHandlerID {
     @Override
     public boolean equals(Object otherID) {
         if (otherID instanceof EventHandlerID) {
-            // cast it.
-            // then perform a check.
             EventHandlerID other = (EventHandlerID)otherID;
             return id == other.id;
         }

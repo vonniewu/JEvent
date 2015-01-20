@@ -1,18 +1,32 @@
+/**
+ * Copyright [yyyy] Vonnie Wu
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ */
+
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class Event<T> {
 
     /**
-     * A Hashmap that has the event handler id as key and the event handler as value.
+     * This HashMap instance stores EventHandlerID as key and
+     * EventHandler as value.
      */
-    // Making the type of the field an interface/base class of the instance can tell others
-    // how you intend to use the instance.
-    // For example, you intend to use the HashMap as a Map, and so you don't intend to use any
-    // methods specific to HashMap. Of course, only do this if you only want to use the methods in
-    // Map (which you happen to do for this class.). Keep this in mind for future refactorings.
-    // It might make your life a little easier.
     private final Map<EventHandlerID, EventHandler> eventHandlerMap = new HashMap<EventHandlerID, EventHandler>();
 
     /**
@@ -45,7 +59,6 @@ public class Event<T> {
      * @param data some data with type T
      */
     public void invoke(T data) {
-        // Change the type below to List<EventHandler<T>>, for the same reason as stated above.
         List<EventHandler<T>> eventHandlers = new ArrayList<EventHandler<T>>(eventHandlerMap.values());
         for (EventHandler handler : eventHandlers) {
             handler.invoke(data);
